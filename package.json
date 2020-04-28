@@ -1,0 +1,34 @@
+{
+  "name": "daelog",
+  "version": "0.0.5",
+  "description": "An experimental story format for generating conversations using Tracery + Twine",
+  "main": "index.js",
+  "scripts": {
+    "compile": "browserify src/index.js -o build/index.js -t [ babelify --presets [ @babel/preset-env] ]",
+    "build": "node index.js",
+    "lint": "eslint ./src/*.js --fix",
+    "start": "npm run lint && npm run compile && npm run build"
+  },
+  "keywords": [],
+  "author": "Dan Cox",
+  "license": "MIT",
+  "dependencies": {
+    "browserify": "^16.5.0",
+    "ejs": "^3.0.1",
+    "tracery-grammar": "^2.7.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "babel-preset-minify": "^0.5.1",
+    "babelify": "^10.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  },
+  "type": "module"
+}
