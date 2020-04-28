@@ -15,7 +15,7 @@ Open Twine 2. Click on Formats from the Sidebar. Go to "Add a new Format"
 
 Copy and paste the following URL:
 
-`URL`
+`https://videlais.github.io/daelog/format.js`
 
 Create a new story. From the Story Menu, go to "Change Story Format". Select Daelog.
 
