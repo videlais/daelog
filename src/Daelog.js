@@ -170,24 +170,31 @@ class Daelog {
     const characters = fragment.querySelectorAll('character');
 
     for (const char of characters) {
+      // Pull the name attribute
       const name = char.attributes.name.value;
+      // Pull the text content
       const textContent = char.textContent;
 
+      // Is this "me"?
       if (name === 'me') {
+        // Build a template literal string
         dialog += `
           <div class="container darker">
             <p>${textContent}</p>
             <div class="choices">`;
 
+        // Write the links back into the element
         for (const l of newLinks) {
           dialog += `
             ${l.outerHTML}
             <br>`;
         }
 
+        // Close the internal element
         dialog += `</div>
           </div>`;
       } else {
+        // This was another character
         const response = window.tracery.grammar.flatten(`#${name}#`);
 
         dialog += `

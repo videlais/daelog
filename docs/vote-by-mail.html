@@ -1,4 +1,106 @@
-(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <style>body {
+  background-color: lightblue;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 20px;
+}
+.container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+		<title>Vote-By-Mail</title>
+	</head>
+	<body>
+		<tw-storydata name="Vote-By-Mail" startnode="1" creator="Twine" creator-version="2.3.4" ifid="8FD060CD-ECE3-4BBE-96AB-1DC3B2C8D4FF" zoom="1" format="Dialog" format-version="0.4.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Start" tags="" position="675.5,44.5" size="100,100">&lt;include&gt;Setup&lt;/include&gt;
+&lt;character name=&quot;Bot&quot;&gt;
+	&lt;p&gt;Hi, there! It looks like this is your first time using the Vote-By-Text(TM) system.&lt;/p&gt;
+	&lt;p&gt;The VbT(TM) is designed to help you cast your vote remotely, and from the safety of your home.&lt;/p&gt;
+	&lt;p&gt;Text VOTE to vote or HISTORY for more details.&lt;/p&gt;
+&lt;/character&gt;
+&lt;character name=&quot;me&quot;&gt;&lt;p&gt;[[VOTE]]&lt;/p&gt;
+	&lt;p&gt;[[HISTORY]]&lt;/p&gt;
+&lt;/character&gt;
+
+</tw-passagedata><tw-passagedata pid="2" name="VOTE" tags="" position="254.5,166.5" size="100,100">&lt;include&gt;Voting&lt;/include&gt;
+&lt;character name=&quot;Bot&quot;&gt;
+	&lt;p&gt;Are you ready to vote?&lt;/p&gt;
+&lt;/character&gt;
+&lt;character name=&quot;me&quot;&gt;
+	&lt;p&gt;[[1 - $firstName$-&gt;1]]&lt;/p&gt;
+	&lt;p&gt;[[2 - $secondName$-&gt;2]]&lt;/p&gt;
+	&lt;p&gt;[[3 - $thirdName$-&gt;3]]&lt;/p&gt;
+&lt;/character&gt;</tw-passagedata><tw-passagedata pid="3" name="Setup" tags="" position="903.5,96.5" size="100,100">&lt;script&gt;
+	
+	// Get the first name
+	window.variables[&quot;firstName&quot;] = window.tracery.grammar.flatten(&quot;#name#&quot;);
+
+	// Get the second name
+	window.variables[&quot;secondName&quot;] = window.tracery.grammar.flatten(&quot;#name#&quot;);
+
+	// Get the third name
+	window.variables[&quot;thirdName&quot;] = window.tracery.grammar.flatten(&quot;#name#&quot;);
+	
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="4" name="name" tags="tracery" position="903.5,198.5" size="100,100">Tara,Lindsay,Beth,Audrey,Sam,Samantha,Victoria,Amy,Colleen,Diana,Tiffany,Margot,Caitlyn,Zoey,Becky,Jenny</tw-passagedata><tw-passagedata pid="5" name="HISTORY" tags="" position="400.5,401.5" size="100,100">&lt;character name=&quot;Bot&quot;&gt;
+	&lt;p&gt;Established by Ordinance No. 43-2218, the Vote-By-Mail(TM) system replaces the existing lottery system. This works in connection with Ordinance No. 43-2208 that established procedures for eliminating overpopulation concerns. As a reminder, every voting adult must enroll in the lottery. Three names will be picked and one person must be removed from the community each year. The Lottery thanks you for following traditions.&lt;/p&gt;
+	&lt;p&gt;Text VOTE to vote.&lt;/p&gt;
+&lt;/character&gt;
+&lt;character name=&quot;me&quot;&gt;&lt;p&gt;[[VOTE]]&lt;/p&gt;
+&lt;/character&gt;</tw-passagedata><tw-passagedata pid="6" name="1" tags="" position="47.5,346.5" size="100,100">&lt;script&gt;
+	// Filter out first name
+	window.tracery.grammar.raw.name = window.tracery.grammar.raw.name.filter(function(value){ return value !==  window.variables[&quot;firstName&quot;] });
+&lt;/script&gt;
+&lt;character name=&quot;Bot&quot;&gt;
+	&lt;p&gt;The Lottery thanks you for your vote.&lt;/p&gt;
+	&lt;p&gt;Be sure to say goodbye to $secondName$ before she is removed from the community.&lt;/p&gt;
+&lt;/character&gt;</tw-passagedata><tw-passagedata pid="7" name="2" tags="" position="218.5,339.5" size="100,100">&lt;script&gt;
+	// Filter out second name
+	window.tracery.grammar.raw.name = window.tracery.grammar.raw.name.filter(function(value){ return value !==  window.variables[&quot;secondName&quot;] });
+&lt;/script&gt;
+&lt;character name=&quot;Bot&quot;&gt;
+	&lt;p&gt;The Lottery thanks you for your vote.&lt;/p&gt;
+	&lt;p&gt;Be sure to say goodbye to $secondName$ before she is removed from the community.&lt;/p&gt;
+&lt;/character&gt;</tw-passagedata><tw-passagedata pid="8" name="3" tags="" position="87.5,66.5" size="100,100">&lt;script&gt;
+	// Filter out first name
+	window.tracery.grammar.raw.name = window.tracery.grammar.raw.name.filter(function(value){ return value !==  window.variables[&quot;thirdName&quot;] });
+&lt;/script&gt;
+&lt;character name=&quot;Bot&quot;&gt;
+	&lt;p&gt;The Lottery thanks you for your vote.&lt;/p&gt;
+	&lt;p&gt;Be sure to say goodbye to $thirdName$ before she is removed from the community.&lt;/p&gt;
+&lt;/character&gt;
+</tw-passagedata><tw-passagedata pid="9" name="RESTART" tags="" position="701.5,197.5" size="100,100">&lt;include&gt;Setup&lt;/include&gt;
+&lt;character name=&quot;me&quot;&gt;
+	&lt;p&gt;[[VOTE]]&lt;/p&gt;
+	&lt;p&gt;[[HISTORY]]&lt;/p&gt;
+&lt;/character&gt;</tw-passagedata><tw-passagedata pid="10" name="Begin" tags="" position="410,34.5" size="100,100">&lt;character name=&quot;Bot&quot;&gt;
+	&lt;p&gt;Hi, there! It looks like this is your first time using the Vote-By-Text(TM) system.&lt;/p&gt;
+	&lt;p&gt;The VbT(TM) is designed to help you cast your vote remotely and from the safety of your home during this of uncertainty.&lt;/p&gt;
+	&lt;p&gt;Text VOTE to vote or HISTORY for more details.&lt;/p&gt;
+&lt;/character&gt;
+&lt;character name=&quot;me&quot;&gt;&lt;p&gt;[[VOTE]]&lt;/p&gt;
+	&lt;p&gt;[[HISTORY]]&lt;/p&gt;
+&lt;/character&gt;</tw-passagedata></tw-storydata>
+		<script>
+        (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 /**
  * @author Kate
  */
@@ -861,7 +963,7 @@ var tracery = function() {
 
 module.exports = tracery; 
 },{}],2:[function(require,module,exports){
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=void 0;function _createForOfIteratorHelper(a,b){var c;if("undefined"==typeof Symbol||null==a[Symbol.iterator]){if(Array.isArray(a)||(c=_unsupportedIterableToArray(a))||b&&a&&"number"==typeof a.length){c&&(a=c);var d=0,e=function(){};return{s:e,n:function n(){return d>=a.length?{done:!0}:{done:!1,value:a[d++]}},e:function e(a){throw a},f:e}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var f,g=!0,h=!1;return{s:function s(){c=a[Symbol.iterator]()},n:function n(){var a=c.next();return g=a.done,a},e:function e(a){h=!0,f=a},f:function f(){try{g||null==c["return"]||c["return"]()}finally{if(h)throw f}}}}function _unsupportedIterableToArray(a,b){if(a){if("string"==typeof a)return _arrayLikeToArray(a,b);var c=Object.prototype.toString.call(a).slice(8,-1);return"Object"===c&&a.constructor&&(c=a.constructor.name),"Map"===c||"Set"===c?Array.from(a):"Arguments"===c||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(c)?_arrayLikeToArray(a,b):void 0}}function _arrayLikeToArray(a,b){(null==b||b>a.length)&&(b=a.length);for(var c=0,d=Array(b);c<b;c++)d[c]=a[c];return d}function _classCallCheck(a,b){if(!(a instanceof b))throw new TypeError("Cannot call a class as a function")}function _defineProperties(a,b){for(var c,d=0;d<b.length;d++)c=b[d],c.enumerable=c.enumerable||!1,c.configurable=!0,"value"in c&&(c.writable=!0),Object.defineProperty(a,c.key,c)}function _createClass(a,b,c){return b&&_defineProperties(a.prototype,b),c&&_defineProperties(a,c),a}var Daelog=/*#__PURE__*/function(){function a(){_classCallCheck(this,a);for(var b,c=document.querySelector("tw-storydata"),d=c.attributes.startnode.value,e=this.findPassageByPid(d),f=document.querySelectorAll("tw-passagedata"),g={},h=0;h<f.length;h++)if(b=f[h],b.hasAttribute("tags")&&b.attributes.tags.value.includes("tracery")){var j=b.attributes.name.value,k=b.innerHTML.split("\n");g[j]=k}window.tracery.grammar=window.tracery.createGrammar(g),this.showPassage(e)}return _createClass(a,[{key:"findPassageByPid",value:function findPassageByPid(a){// Find the element by its 'pid'
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=void 0;function _createForOfIteratorHelper(a){if("undefined"==typeof Symbol||null==a[Symbol.iterator]){if(Array.isArray(a)||(a=_unsupportedIterableToArray(a))){var b=0,c=function(){};return{s:c,n:function n(){return b>=a.length?{done:!0}:{done:!1,value:a[b++]}},e:function e(a){throw a},f:c}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var d,e,f=!0,g=!1;return{s:function s(){d=a[Symbol.iterator]()},n:function n(){var a=d.next();return f=a.done,a},e:function e(a){g=!0,e=a},f:function f(){try{f||null==d["return"]||d["return"]()}finally{if(g)throw e}}}}function _unsupportedIterableToArray(a,b){if(a){if("string"==typeof a)return _arrayLikeToArray(a,b);var c=Object.prototype.toString.call(a).slice(8,-1);return"Object"===c&&a.constructor&&(c=a.constructor.name),"Map"===c||"Set"===c?Array.from(c):"Arguments"===c||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(c)?_arrayLikeToArray(a,b):void 0}}function _arrayLikeToArray(a,b){(null==b||b>a.length)&&(b=a.length);for(var c=0,d=Array(b);c<b;c++)d[c]=a[c];return d}function _classCallCheck(a,b){if(!(a instanceof b))throw new TypeError("Cannot call a class as a function")}function _defineProperties(a,b){for(var c,d=0;d<b.length;d++)c=b[d],c.enumerable=c.enumerable||!1,c.configurable=!0,"value"in c&&(c.writable=!0),Object.defineProperty(a,c.key,c)}function _createClass(a,b,c){return b&&_defineProperties(a.prototype,b),c&&_defineProperties(a,c),a}var Dialog=/*#__PURE__*/function(){function Dialog(){_classCallCheck(this,Dialog);for(var a,b=document.querySelector("tw-storydata"),c=b.attributes.startnode.value,d=this.findPassageByPid(c),e=document.querySelectorAll("tw-passagedata"),f={},g=0;g<e.length;g++)if(a=e[g],a.hasAttribute("tags")&&a.attributes.tags.value.includes("tracery")){var h=a.attributes.name.value,j=a.innerHTML.split(",");f[h]=j}window.tracery.grammar=window.tracery.createGrammar(f),this.showPassage(d)}return _createClass(Dialog,[{key:"findPassageByPid",value:function findPassageByPid(a){// Find the element by its 'pid'
 return document.querySelector("[pid=\"".concat(a,"\"]"))}},{key:"findPassageByName",value:function findPassageByName(a){// Find the element by its 'name'
 return document.querySelector("[name=\"".concat(a,"\"]"))}},{key:"showPassage",value:function showPassage(a){// Look for the 'tw-passage'
 var b=document.querySelector("tw-passage");// If it is null, it does not exist yet
@@ -870,23 +972,27 @@ var c=a.innerHTML;// Parse contents
 c=this.parse(c),b.innerHTML+=c;// Find all links in the current passage
 var d,e=b.querySelectorAll("a[data-passage]"),f=_createForOfIteratorHelper(e);// For each link, add an event listener
 try{for(f.s();!(d=f.n()).done;){var g=d.value;g.addEventListener("click",function(a){// Get the name of the passage to load.
-var b=this.attributes["data-passage"].value,c=window.daelog.findPassageByName(b),d=a.target.textContent,e=document.querySelector(".choices");// Find the passage by its name
-e.innerHTML=d,e.className="",window.daelog.showPassage(c)})}// Append the child element to the HTML <body>
+var b=this.attributes["data-passage"].value,c=window.dialog.findPassageByName(b),d=a.target.textContent,e=document.querySelector(".choices");// Find the passage by its name
+e.innerHTML=d,e.className="",window.dialog.showPassage(c)})}// Append the child element to the HTML <body>
 // (If it already exists, it will not be appended.)
-}catch(a){f.e(a)}finally{f.f()}document.body.appendChild(b)}},{key:"parse",value:function parse(a){a=a.replace(/&lt;/g,function(){return"<"}),a=a.replace(/&gt;/g,function(){return">"}),a=a.replace(/\n/g,function(){return"<br>"}),a=a.replace(/#(.*?)#/g,function(a){return window.tracery.grammar.flatten(a)}),a=a.replace(/\[\[(.*?)\]\]/g,function(a,b){var c=b,d=b.indexOf("|");/* display|target format */if(-1!==d)c=b.substr(0,d),b=b.substr(d+1);else{/* display->target format */var e=b.indexOf("->");if(-1!==e)c=b.substr(0,e),b=b.substr(e+2);else{/* target<-display format */var f=b.indexOf("<-");-1!==f&&(c=b.substr(f+2),b=b.substr(0,f))}}return"<a href=\"javascript:void(0)\" data-passage=\""+b+"\">"+c+"</a>"});// Create a DocumentFragment
-var b=new DocumentFragment,c=document.createElement("body");// Create a BODY
-c.innerHTML=a,b.append(c);var d,e="",f=b.querySelectorAll("a"),g=[],h=_createForOfIteratorHelper(f);try{// Clone the previous links into a new array
-for(h.s();!(d=h.n()).done;){var r=d.value;g.push(r.cloneNode(!0)),r.remove()}// Find all CHARACTER elements
-}catch(a){h.e(a)}finally{h.f()}var i,j=b.querySelectorAll("character"),k=_createForOfIteratorHelper(j);try{for(k.s();!(i=k.n()).done;){var m=i.value,n=m.attributes.name.value,o=m.textContent;// Is this "me"?
-if("me"===n){e+="\n          <div class=\"container darker\">\n            <p>".concat(o,"</p>\n            <div class=\"choices\">");// Write the links back into the element
-var p,q=_createForOfIteratorHelper(g);try{for(q.s();!(p=q.n()).done;){var l=p.value;e+="\n            ".concat(l.outerHTML,"\n            <br>")}// Close the internal element
-}catch(a){q.e(a)}finally{q.f()}e+="</div>\n          </div>"}else{// This was another character
-var s=window.tracery.grammar.flatten("#".concat(n,"#"));e+="\n          <div class=\"container\">\n            <p><strong>".concat(n,"</strong>: ").concat(s,"</p>\n          </div>")}m.remove()}}catch(a){k.e(a)}finally{k.f()}return a+=e,a=a.replace(/<character(.*?)>(.*?)<\/character>/g,function(){// Return an empty string
-return""}),a}}]),a}(),_default=Daelog;exports["default"]=_default;
+}catch(a){f.e(a)}finally{f.f()}document.body.appendChild(b)}},{key:"parse",value:function parse(result){var _this=this;result=result.replace(/&lt;/g,function(){return"<"}),result=result.replace(/&gt;/g,function(){return">"}),result=result.replace(/<script>((?:.|\n)*?)<\/script>/g,function(match,target){// Run the code
+try{eval(target)}catch(a){console.log(a)}// Return an empty string
+return""}),result=result.replace(/\n/g,function(){return"<br>"}),result=result.replace(/\#(.*?)\#/g,function(a){return window.tracery.grammar.flatten(a)}),result=result.replace(/\$(.*?)\$/g,function(a,b){var c="";return window.variables.hasOwnProperty(b)&&(c=window.variables[b]),c}),result=result.replace(/<include>(.*?)<\/include>/g,function(a,b){// Look for the passage by its name
+var c=_this.findPassageByName(b),d="";// Save a result
+// Return result.
+// It will either be an empty string or the parsed content.
+return null!==c&&(d=_this.parse(c.innerHTML)),d}),result=result.replace(/\[\[(.*?)\]\]/g,function(a,b){var c=b,d=b.indexOf("|");/* display|target format */if(-1!==d)c=b.substr(0,d),b=b.substr(d+1);else{/* display->target format */var e=b.indexOf("->");if(-1!==e)c=b.substr(0,e),b=b.substr(e+2);else{/* target<-display format */var f=b.indexOf("<-");-1!==f&&(c=b.substr(f+2),b=b.substr(0,f))}}return"<a href=\"javascript:void(0)\" data-passage=\""+b+"\">"+c+"</a>"});// Create a DocumentFragment
+var fragment=new DocumentFragment,body=document.createElement("body");// Create a BODY
+body.innerHTML=result,fragment.append(body);var _step2,dialog="",originalLinks=fragment.querySelectorAll("a"),newLinks=[],_iterator2=_createForOfIteratorHelper(originalLinks);try{// Clone the previous links into a new array
+for(_iterator2.s();!(_step2=_iterator2.n()).done;){var l=_step2.value;newLinks.push(l.cloneNode(!0)),l.remove()}// Find all CHARACTER elements
+}catch(a){_iterator2.e(a)}finally{_iterator2.f()}var _step3,characters=fragment.querySelectorAll("character"),_iterator3=_createForOfIteratorHelper(characters);try{for(_iterator3.s();!(_step3=_iterator3.n()).done;){var _char=_step3.value,name=_char.attributes.name.value,textContent=_char.textContent;if("me"===name){dialog+="\n              <div class=\"container darker\">\n                  <p>".concat(textContent,"</p>\n                  <div class=\"choices\">");var _step4,_iterator4=_createForOfIteratorHelper(newLinks);try{for(_iterator4.s();!(_step4=_iterator4.n()).done;){var _l=_step4.value;dialog+="\n                          ".concat(_l.outerHTML,"\n                          <br>\n                          ")}}catch(a){_iterator4.e(a)}finally{_iterator4.f()}dialog+="</div>\n              </div>"}else dialog+="\n              <div class=\"container\">\n                  <p><strong>".concat(name,"</strong>: ").concat(textContent,"</p>\n              </div>");_char.remove()}}catch(a){_iterator3.e(a)}finally{_iterator3.f()}return result+=dialog,result=result.replace(/<character(.*?)>(.*?)<\/character>/g,function(){// Return an empty string
+return""}),result}}]),Dialog}(),_default=Dialog;exports["default"]=_default;
 
 },{}],3:[function(require,module,exports){
-"use strict";var _traceryGrammar=_interopRequireDefault(require("tracery-grammar")),_Daelog=_interopRequireDefault(require("./Daelog.js"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}// Create a global Tracery
-// Create a global Daelog
-window.tracery=_traceryGrammar["default"],window.daelog=new _Daelog["default"];
+"use strict";var _traceryGrammar=_interopRequireDefault(require("tracery-grammar")),_Dialog=_interopRequireDefault(require("./Dialog.js"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}window.tracery=_traceryGrammar["default"],window.variables={},window.dialog=new _Dialog["default"];
 
-},{"./Daelog.js":2,"tracery-grammar":1}]},{},[3]);
+},{"./Dialog.js":2,"tracery-grammar":1}]},{},[3]);
+
+		</script>
+	</body>
+</html>

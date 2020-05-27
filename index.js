@@ -22,5 +22,8 @@ story.source = indexFile;
 // Build a "format.js" file contents
 // Convert the 'story' back into a string
 const format = 'window.storyFormat(' + JSON.stringify(story) + ');';
-// Write the "format.js" file using
+// Write the "dist/format.js" file
 fs.writeFileSync('dist/format.js', format);
+
+// Write the "docs/format.js" file
+fs.writeFileSync('docs/format.js', format);
